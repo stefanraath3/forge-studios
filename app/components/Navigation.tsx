@@ -43,12 +43,20 @@ export default function Navigation() {
               Contact
             </Link>
           </div>
-          <Link
-            href="/contact"
-            className="px-5 py-2 rounded-lg bg-foreground text-background text-sm font-medium hover:opacity-90 transition-opacity"
-          >
-            Start project
-          </Link>
+          <div className="flex items-center gap-3">
+            <Link
+              href="/sign-in"
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+            >
+              Sign in
+            </Link>
+            <Link
+              href="/contact"
+              className="px-5 py-2 rounded-lg bg-foreground text-background text-sm font-medium hover:opacity-90 transition-opacity"
+            >
+              Start project
+            </Link>
+          </div>
         </div>
       </div>
     </nav>
