@@ -7,6 +7,7 @@ import {
   Layers,
   Users,
 } from "lucide-react";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -33,12 +34,12 @@ export default function Home() {
               >
                 Services
               </a>
-              <a
-                href="#work"
+              <Link
+                href="/case-studies"
                 className="text-sm text-muted-foreground hover:text-foreground transition-colors"
               >
                 Work
-              </a>
+              </Link>
               <a
                 href="#contact"
                 className="text-sm text-muted-foreground hover:text-foreground transition-colors"
@@ -85,9 +86,12 @@ export default function Home() {
               Discuss your project
               <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
             </button>
-            <button className="px-7 py-3.5 rounded-lg border border-border hover:bg-muted/40 transition-colors font-medium">
+            <Link
+              href="/case-studies"
+              className="px-7 py-3.5 rounded-lg border border-border hover:bg-muted/40 transition-colors font-medium text-center"
+            >
               View case studies
-            </button>
+            </Link>
           </div>
         </div>
       </section>
