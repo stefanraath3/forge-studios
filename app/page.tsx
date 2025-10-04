@@ -1,18 +1,29 @@
-import { ArrowRight, Code2, Sparkles, Zap, Shield, Globe } from "lucide-react";
+import {
+  ArrowRight,
+  Code2,
+  Zap,
+  Shield,
+  Globe,
+  Layers,
+  Users,
+} from "lucide-react";
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-background">
       {/* Navigation */}
-      <nav className="fixed top-0 w-full z-50 border-b border-border/40 bg-background/80 backdrop-blur-xl">
+      <nav className="fixed top-0 w-full z-50 border-b border-border/40 bg-background/95 backdrop-blur-xl">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-foreground to-foreground/70 flex items-center justify-center">
-                <Code2 className="w-5 h-5 text-background" strokeWidth={2.5} />
+              <div className="w-8 h-8 rounded-lg bg-foreground flex items-center justify-center">
+                <Code2
+                  className="w-4.5 h-4.5 text-background"
+                  strokeWidth={2.5}
+                />
               </div>
-              <span className="text-xl font-semibold tracking-tight">
-                Vertex
+              <span className="text-lg font-semibold tracking-tight">
+                Forge Studios
               </span>
             </div>
             <div className="hidden md:flex items-center gap-8">
@@ -23,10 +34,10 @@ export default function Home() {
                 Services
               </a>
               <a
-                href="#approach"
+                href="#work"
                 className="text-sm text-muted-foreground hover:text-foreground transition-colors"
               >
-                Approach
+                Work
               </a>
               <a
                 href="#contact"
@@ -35,108 +46,113 @@ export default function Home() {
                 Contact
               </a>
             </div>
-            <button className="px-4 py-2 rounded-lg bg-foreground text-background text-sm font-medium hover:bg-foreground/90 transition-colors">
-              Start a project
+            <button className="px-5 py-2 rounded-lg bg-foreground text-background text-sm font-medium hover:opacity-90 transition-opacity">
+              Start project
             </button>
           </div>
         </div>
       </nav>
 
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 px-6 lg:px-8 overflow-hidden">
-        {/* Gradient background */}
+      <section className="relative pt-32 pb-24 px-6 lg:px-8 overflow-hidden">
+        {/* Subtle gradient background */}
         <div className="absolute inset-0 -z-10">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-gradient-to-br from-primary/20 via-transparent to-transparent rounded-full blur-3xl" />
-          <div className="absolute top-1/2 right-0 w-[600px] h-[600px] bg-gradient-to-bl from-primary/10 via-transparent to-transparent rounded-full blur-3xl" />
+          <div className="absolute top-[10%] left-[10%] w-[600px] h-[600px] bg-gradient-to-br from-foreground/5 via-transparent to-transparent rounded-full blur-3xl" />
+          <div className="absolute bottom-[10%] right-[10%] w-[500px] h-[500px] bg-gradient-to-tl from-foreground/5 via-transparent to-transparent rounded-full blur-3xl" />
         </div>
 
-        <div className="max-w-7xl mx-auto">
-          <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-muted/50 border border-border/50 mb-6">
-              <Sparkles className="w-3.5 h-3.5" />
-              <span className="text-xs font-medium">
-                Crafting digital excellence
-              </span>
-            </div>
-            <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-6 bg-gradient-to-br from-foreground to-foreground/70 bg-clip-text text-transparent">
-              Building software that scales
-            </h1>
-            <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
-              We're a software engineering house focused on creating elegant,
-              performant, and maintainable solutions for ambitious teams.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <button className="group px-6 py-3 rounded-lg bg-foreground text-background font-medium hover:bg-foreground/90 transition-all flex items-center justify-center gap-2">
-                Let's talk
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
-              </button>
-              <button className="px-6 py-3 rounded-lg border border-border hover:bg-muted/50 transition-colors font-medium">
-                View our work
-              </button>
-            </div>
+        <div className="max-w-5xl mx-auto text-center">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-muted/60 border border-border/60 mb-8">
+            <div className="w-1.5 h-1.5 rounded-full bg-foreground animate-pulse" />
+            <span className="text-xs font-medium text-foreground/80">
+              Available for select projects
+            </span>
+          </div>
+
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-8 text-foreground">
+            Elegant software,
+            <br />
+            built to last
+          </h1>
+
+          <p className="text-lg md:text-xl text-muted-foreground mb-12 max-w-2xl mx-auto leading-relaxed">
+            We partner with forward-thinking companies to design and build
+            exceptional digital products.
+          </p>
+
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <button className="group px-7 py-3.5 rounded-lg bg-foreground text-background font-medium hover:opacity-90 transition-all flex items-center justify-center gap-2">
+              Discuss your project
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+            </button>
+            <button className="px-7 py-3.5 rounded-lg border border-border hover:bg-muted/40 transition-colors font-medium">
+              View case studies
+            </button>
           </div>
         </div>
       </section>
 
       {/* Services Section */}
-      <section id="services" className="py-20 px-6 lg:px-8">
+      <section id="services" className="py-24 px-6 lg:px-8 bg-muted/20">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
-              What we do
+          <div className="mb-16">
+            <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-4">
+              Expertise
             </h2>
-            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              End-to-end engineering services tailored to your needs
+            <p className="text-muted-foreground text-lg max-w-2xl">
+              End-to-end development and strategic engineering guidance
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-border rounded-2xl overflow-hidden">
             {[
               {
                 icon: Code2,
-                title: "Product Engineering",
+                title: "Product Development",
                 description:
-                  "Full-stack development with modern frameworks and best practices. We build products that users love.",
+                  "Full-stack engineering with modern frameworks. We build scalable products from concept to launch.",
               },
               {
                 icon: Zap,
-                title: "Performance Optimization",
+                title: "Performance Engineering",
                 description:
-                  "Speed matters. We optimize your applications for blazing-fast performance and exceptional user experience.",
+                  "Speed and efficiency at every layer. Optimized for real-world usage and exceptional UX.",
               },
               {
                 icon: Globe,
-                title: "Cloud Architecture",
+                title: "Cloud & Infrastructure",
                 description:
-                  "Scalable, resilient cloud infrastructure designed for growth. Built on AWS, GCP, and Azure.",
+                  "Resilient, scalable architecture designed for growth. AWS, GCP, and hybrid solutions.",
               },
               {
                 icon: Shield,
                 title: "Security & Compliance",
                 description:
-                  "Enterprise-grade security practices and compliance standards built into every layer.",
+                  "Enterprise-grade security built in from day one. SOC 2, GDPR, and industry standards.",
               },
               {
-                icon: Sparkles,
-                title: "AI Integration",
+                icon: Layers,
+                title: "System Design",
                 description:
-                  "Leverage cutting-edge AI and ML to unlock new capabilities and competitive advantages.",
+                  "Thoughtful architecture decisions that enable long-term maintainability and evolution.",
               },
               {
-                icon: Code2,
-                title: "Technical Advisory",
+                icon: Users,
+                title: "Team Augmentation",
                 description:
-                  "Strategic guidance on technology decisions, architecture, and engineering practices.",
+                  "Experienced engineers who integrate seamlessly with your team and processes.",
               },
             ].map((service, i) => (
               <div
                 key={i}
-                className="group p-6 rounded-2xl border border-border bg-card hover:border-foreground/20 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5"
+                className="bg-background p-8 hover:bg-muted/30 transition-colors group"
               >
-                <div className="w-10 h-10 rounded-lg bg-muted/50 flex items-center justify-center mb-4 group-hover:bg-foreground group-hover:text-background transition-colors">
+                <div className="w-11 h-11 rounded-xl bg-foreground/5 flex items-center justify-center mb-5 group-hover:bg-foreground group-hover:text-background transition-colors">
                   <service.icon className="w-5 h-5" strokeWidth={2} />
                 </div>
-                <h3 className="text-lg font-semibold mb-2">{service.title}</h3>
+                <h3 className="text-lg font-semibold mb-2.5">
+                  {service.title}
+                </h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">
                   {service.description}
                 </p>
@@ -146,70 +162,64 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Approach Section */}
-      <section id="approach" className="py-20 px-6 lg:px-8 bg-muted/30">
+      {/* Philosophy Section */}
+      <section id="work" className="py-24 px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
-              Our approach
-            </h2>
-            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              Methodology refined through years of building exceptional software
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                step: "01",
-                title: "Discovery & Strategy",
-                description:
-                  "Deep dive into your vision, goals, and constraints. We align on what success looks like before writing a single line of code.",
-              },
-              {
-                step: "02",
-                title: "Build & Iterate",
-                description:
-                  "Rapid development cycles with continuous feedback. We ship early and often, refining based on real-world usage.",
-              },
-              {
-                step: "03",
-                title: "Scale & Support",
-                description:
-                  "Launch is just the beginning. We ensure your product scales smoothly and provide ongoing support and optimization.",
-              },
-            ].map((phase, i) => (
-              <div key={i} className="relative">
-                <div className="text-6xl font-bold text-muted-foreground/10 mb-4">
-                  {phase.step}
-                </div>
-                <h3 className="text-xl font-semibold mb-3">{phase.title}</h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  {phase.description}
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div>
+              <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-6">
+                Quality over velocity
+              </h2>
+              <div className="space-y-6 text-muted-foreground">
+                <p className="text-lg leading-relaxed">
+                  We believe the best software is built through careful
+                  consideration, not rushed timelines. Every line of code is an
+                  investment in your product's future.
+                </p>
+                <p className="text-lg leading-relaxed">
+                  Our approach emphasizes clean architecture, comprehensive
+                  testing, and documentation that actually helps. We build
+                  systems that your team will thank you for years down the line.
+                </p>
+                <p className="text-lg leading-relaxed">
+                  Whether you're a startup finding product-market fit or an
+                  enterprise scaling for growth, we bring the same level of
+                  craft and attention to detail.
                 </p>
               </div>
-            ))}
+            </div>
+
+            <div className="grid grid-cols-2 gap-4">
+              <div className="space-y-4">
+                <div className="aspect-square rounded-2xl bg-muted/40 border border-border" />
+                <div className="aspect-[4/3] rounded-2xl bg-muted/40 border border-border" />
+              </div>
+              <div className="space-y-4 pt-8">
+                <div className="aspect-[4/3] rounded-2xl bg-muted/40 border border-border" />
+                <div className="aspect-square rounded-2xl bg-muted/40 border border-border" />
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section id="contact" className="py-20 px-6 lg:px-8">
+      <section id="contact" className="py-24 px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          <div className="relative rounded-3xl border border-border bg-gradient-to-br from-muted/50 to-background p-12 md:p-16 overflow-hidden">
+          <div className="relative rounded-3xl border border-border bg-muted/20 p-12 md:p-20 overflow-hidden">
             <div className="absolute inset-0 -z-10">
-              <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-primary/20 via-transparent to-transparent rounded-full blur-3xl" />
+              <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-foreground/5 via-transparent to-transparent rounded-full blur-3xl" />
             </div>
-            <div className="max-w-2xl">
-              <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-4">
-                Let's build something exceptional
+            <div className="max-w-2xl mx-auto text-center">
+              <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-6">
+                Let's build together
               </h2>
-              <p className="text-lg text-muted-foreground mb-8">
-                Whether you're a startup with a vision or an enterprise seeking
-                transformation, we're here to help turn ideas into reality.
+              <p className="text-lg text-muted-foreground mb-10">
+                Have a project in mind? We're always interested in hearing about
+                new opportunities and challenges.
               </p>
-              <button className="group px-6 py-3 rounded-lg bg-foreground text-background font-medium hover:bg-foreground/90 transition-all flex items-center gap-2">
-                Get in touch
+              <button className="group px-7 py-3.5 rounded-lg bg-foreground text-background font-medium hover:opacity-90 transition-all inline-flex items-center gap-2">
+                Start a conversation
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
               </button>
             </div>
@@ -220,13 +230,16 @@ export default function Home() {
       {/* Footer */}
       <footer className="border-t border-border py-12 px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8 mb-8">
             <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-foreground to-foreground/70 flex items-center justify-center">
-                <Code2 className="w-5 h-5 text-background" strokeWidth={2.5} />
+              <div className="w-8 h-8 rounded-lg bg-foreground flex items-center justify-center">
+                <Code2
+                  className="w-4.5 h-4.5 text-background"
+                  strokeWidth={2.5}
+                />
               </div>
-              <span className="text-xl font-semibold tracking-tight">
-                Vertex
+              <span className="text-lg font-semibold tracking-tight">
+                Forge Studios
               </span>
             </div>
             <div className="flex gap-8">
@@ -248,24 +261,30 @@ export default function Home() {
               >
                 LinkedIn
               </a>
+              <a
+                href="#"
+                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+              >
+                Email
+              </a>
             </div>
           </div>
-          <div className="mt-8 pt-8 border-t border-border flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+          <div className="pt-8 border-t border-border flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
             <p className="text-sm text-muted-foreground">
-              © 2025 Vertex. All rights reserved.
+              © 2025 Forge Studios. All rights reserved.
             </p>
             <div className="flex gap-6">
               <a
                 href="#"
                 className="text-sm text-muted-foreground hover:text-foreground transition-colors"
               >
-                Privacy
+                Privacy Policy
               </a>
               <a
                 href="#"
                 className="text-sm text-muted-foreground hover:text-foreground transition-colors"
               >
-                Terms
+                Terms of Service
               </a>
             </div>
           </div>
