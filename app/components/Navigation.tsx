@@ -24,12 +24,18 @@ export default function Navigation() {
             >
               Services
             </a>
-            <a
-              href="/#work"
+            <Link
+              href="/case-studies"
               className="text-sm text-muted-foreground hover:text-foreground transition-colors"
             >
-              Work
-            </a>
+              Case Studies
+            </Link>
+            <Link
+              href="/about"
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+            >
+              About
+            </Link>
             <Link
               href="/contact"
               className="text-sm text-muted-foreground hover:text-foreground transition-colors"

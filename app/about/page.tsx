@@ -1,6 +1,7 @@
-import { Code2, ArrowLeft } from "lucide-react";
+import { Code2 } from "lucide-react";
 import Link from "next/link";
 import type { Metadata } from "next";
+import Navigation from "../components/Navigation";
 
 export const metadata: Metadata = {
   title: "About — Forge Studios",
@@ -11,31 +12,7 @@ export const metadata: Metadata = {
 export default function About() {
   return (
     <div className="min-h-screen bg-background">
-      {/* Navigation */}
-      <nav className="fixed top-0 w-full z-50 border-b border-border/40 bg-background/95 backdrop-blur-xl">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-            <Link href="/" className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-lg bg-foreground flex items-center justify-center">
-                <Code2
-                  className="w-4.5 h-4.5 text-background"
-                  strokeWidth={2.5}
-                />
-              </div>
-              <span className="text-lg font-semibold tracking-tight">
-                Forge Studios
-              </span>
-            </Link>
-            <Link
-              href="/"
-              className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
-            >
-              <ArrowLeft className="w-4 h-4" />
-              Back to home
-            </Link>
-          </div>
-        </div>
-      </nav>
+      <Navigation />
 
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 px-6 lg:px-8">

@@ -9,6 +9,7 @@ import {
   Target,
 } from "lucide-react";
 import Link from "next/link";
+import Navigation from "../components/Navigation";
 
 const caseStudies = [
   {
@@ -112,53 +113,7 @@ const caseStudies = [
 export default function CaseStudiesPage() {
   return (
     <div className="min-h-screen bg-background">
-      {/* Navigation */}
-      <nav className="fixed top-0 w-full z-50 border-b border-border/40 bg-background/95 backdrop-blur-xl">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-            <Link href="/" className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-lg bg-foreground flex items-center justify-center">
-                <Code2
-                  className="w-4.5 h-4.5 text-background"
-                  strokeWidth={2.5}
-                />
-              </div>
-              <span className="text-lg font-semibold tracking-tight">
-                Forge Studios
-              </span>
-            </Link>
-            <div className="hidden md:flex items-center gap-8">
-              <Link
-                href="/#services"
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-              >
-                Services
-              </Link>
-              <Link
-                href="/#work"
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-              >
-                Work
-              </Link>
-              <Link
-                href="/case-studies"
-                className="text-sm text-foreground font-medium transition-colors"
-              >
-                Case Studies
-              </Link>
-              <Link
-                href="/#contact"
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-              >
-                Contact
-              </Link>
-            </div>
-            <button className="px-5 py-2 rounded-lg bg-foreground text-background text-sm font-medium hover:opacity-90 transition-opacity">
-              Start project
-            </button>
-          </div>
-        </div>
-      </nav>
+      <Navigation />
 
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 px-6 lg:px-8 overflow-hidden">
