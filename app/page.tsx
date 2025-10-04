@@ -50,9 +50,12 @@ export default function Home() {
               Discuss your project
               <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
             </a>
-            <button className="px-7 py-3.5 rounded-lg border border-border hover:bg-muted/40 transition-colors font-medium">
+            <Link
+              href="/case-studies"
+              className="px-7 py-3.5 rounded-lg border border-border hover:bg-muted/40 transition-colors font-medium text-center"
+            >
               View case studies
-            </button>
+            </Link>
           </div>
         </div>
       </section>
