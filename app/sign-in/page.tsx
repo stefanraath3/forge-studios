@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import {
   ArrowRight,
   Code2,
@@ -12,6 +13,7 @@ import {
 } from "lucide-react";
 
 export default function SignIn() {
+  const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
     email: "",
@@ -23,14 +25,14 @@ export default function SignIn() {
     e.preventDefault();
     // Store user data in localStorage
     const userData = {
-      name: formData.email.split("@")[0], // Use email username as name
+      name: formData.email.split("@")[0],
       email: formData.email,
       userType: formData.userType,
       isLoggedIn: true,
     };
     localStorage.setItem("user", JSON.stringify(userData));
-    // Redirect to home page
-    window.location.href = "/dashboard";
+    // Redirect to dashboard
+    router.push("/dashboard");
   };
 
   return (
