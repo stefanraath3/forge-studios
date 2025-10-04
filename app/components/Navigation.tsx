@@ -1,7 +1,18 @@
+"use client";
+
 import Link from "next/link";
-import { Code2 } from "lucide-react";
+import { Code2, Moon, Sun } from "lucide-react";
+import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
 
 export default function Navigation() {
+  const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   return (
     <nav className="fixed top-0 w-full z-50 border-b border-border/40 bg-background/95 backdrop-blur-xl">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
@@ -44,6 +55,19 @@ export default function Navigation() {
             </Link>
           </div>
           <div className="flex items-center gap-3">
+            {mounted && (
+              <button
+                onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                className="p-2 rounded-lg hover:bg-accent transition-colors"
+                aria-label="Toggle theme"
+              >
+                {theme === "dark" ? (
+                  <Sun className="w-5 h-5" />
+                ) : (
+                  <Moon className="w-5 h-5" />
+                )}
+              </button>
+            )}
             <Link
               href="/sign-in"
               className="text-sm text-muted-foreground hover:text-foreground transition-colors"
