@@ -1,63 +1,19 @@
 import {
   ArrowRight,
-  Code2,
   Zap,
   Shield,
   Globe,
   Layers,
   Users,
+  Code2,
 } from "lucide-react";
+import Link from "next/link";
+import Navigation from "./components/Navigation";
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-background">
-      {/* Navigation */}
-      <nav className="fixed top-0 w-full z-50 border-b border-border/40 bg-background/95 backdrop-blur-xl">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-lg bg-foreground flex items-center justify-center">
-                <Code2
-                  className="w-4.5 h-4.5 text-background"
-                  strokeWidth={2.5}
-                />
-              </div>
-              <span className="text-lg font-semibold tracking-tight">
-                Forge Studios
-              </span>
-            </div>
-            <div className="hidden md:flex items-center gap-8">
-              <a
-                href="#services"
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-              >
-                Services
-              </a>
-              <a
-                href="#work"
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-              >
-                Work
-              </a>
-              <a
-                href="/about"
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-              >
-                About
-              </a>
-              <a
-                href="#contact"
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-              >
-                Contact
-              </a>
-            </div>
-            <button className="px-5 py-2 rounded-lg bg-foreground text-background text-sm font-medium hover:opacity-90 transition-opacity">
-              Start project
-            </button>
-          </div>
-        </div>
-      </nav>
+      <Navigation />
 
       {/* Hero Section */}
       <section className="relative pt-32 pb-24 px-6 lg:px-8 overflow-hidden">
@@ -87,10 +43,13 @@ export default function Home() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="group px-7 py-3.5 rounded-lg bg-foreground text-background font-medium hover:opacity-90 transition-all flex items-center justify-center gap-2">
+            <a
+              href="/contact"
+              className="group px-7 py-3.5 rounded-lg bg-foreground text-background font-medium hover:opacity-90 transition-all flex items-center justify-center gap-2"
+            >
               Discuss your project
               <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
-            </button>
+            </a>
             <button className="px-7 py-3.5 rounded-lg border border-border hover:bg-muted/40 transition-colors font-medium">
               View case studies
             </button>
@@ -224,10 +183,13 @@ export default function Home() {
                 Have a project in mind? We're always interested in hearing about
                 new opportunities and challenges.
               </p>
-              <button className="group px-7 py-3.5 rounded-lg bg-foreground text-background font-medium hover:opacity-90 transition-all inline-flex items-center gap-2">
+              <a
+                href="/contact"
+                className="group px-7 py-3.5 rounded-lg bg-foreground text-background font-medium hover:opacity-90 transition-all inline-flex items-center gap-2"
+              >
                 Start a conversation
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
-              </button>
+              </a>
             </div>
           </div>
         </div>
@@ -237,7 +199,7 @@ export default function Home() {
       <footer className="border-t border-border py-12 px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8 mb-8">
-            <div className="flex items-center gap-2">
+            <Link href="/" className="flex items-center gap-2">
               <div className="w-8 h-8 rounded-lg bg-foreground flex items-center justify-center">
                 <Code2
                   className="w-4.5 h-4.5 text-background"
@@ -247,7 +209,7 @@ export default function Home() {
               <span className="text-lg font-semibold tracking-tight">
                 Forge Studios
               </span>
-            </div>
+            </Link>
             <div className="flex gap-8">
               <a
                 href="#"
