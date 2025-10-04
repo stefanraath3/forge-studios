@@ -1,8 +1,17 @@
 "use client";
 
 import Link from "next/link";
-import { Code2, User, Settings, LogOut, ChevronDown } from "lucide-react";
-import { useState, useEffect } from "react";
+import {
+  Code2,
+  Moon,
+  Sun,
+  User,
+  Settings,
+  LogOut,
+  ChevronDown,
+} from "lucide-react";
+import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
 
 export default function Navigation() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -21,6 +30,13 @@ export default function Navigation() {
       setIsLoggedIn(user.isLoggedIn);
       setUserData(user);
     }
+  }, []);
+
+  const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
   }, []);
 
   return (
@@ -65,6 +81,19 @@ export default function Navigation() {
             </Link>
           </div>
           <div className="flex items-center gap-3">
+            {mounted && (
+              <button
+                onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                className="p-2 rounded-lg hover:bg-accent transition-colors"
+                aria-label="Toggle theme"
+              >
+                {theme === "dark" ? (
+                  <Sun className="w-5 h-5" />
+                ) : (
+                  <Moon className="w-5 h-5" />
+                )}
+              </button>
+            )}
             {isLoggedIn ? (
               <div className="relative">
                 <button
