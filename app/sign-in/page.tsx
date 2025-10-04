@@ -3,7 +3,14 @@
 import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { ArrowRight, Code2, Eye, EyeOff } from "lucide-react";
+import {
+  ArrowRight,
+  Code2,
+  Eye,
+  EyeOff,
+  User,
+  ChevronDown,
+} from "lucide-react";
 
 export default function SignIn() {
   const router = useRouter();
@@ -11,14 +18,20 @@ export default function SignIn() {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
+    userType: "client",
   });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle sign in logic here
-    console.log("Sign in with:", formData);
-
-    // Redirect to dashboard after successful sign in
+    // Store user data in localStorage
+    const userData = {
+      name: formData.email.split("@")[0],
+      email: formData.email,
+      userType: formData.userType,
+      isLoggedIn: true,
+    };
+    localStorage.setItem("user", JSON.stringify(userData));
+    // Redirect to dashboard
     router.push("/dashboard");
   };
 
@@ -70,6 +83,35 @@ export default function SignIn() {
 
           <div className="bg-card border border-border rounded-2xl p-8 shadow-sm">
             <form onSubmit={handleSubmit} className="space-y-5">
+              {/* User Type Dropdown */}
+              <div className="space-y-2">
+                <label
+                  htmlFor="userType"
+                  className="text-sm font-medium text-foreground block"
+                >
+                  Sign in as
+                </label>
+                <div className="relative">
+                  <div className="absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none">
+                    <User className="w-4 h-4 text-muted-foreground" />
+                  </div>
+                  <select
+                    id="userType"
+                    value={formData.userType}
+                    onChange={(e) =>
+                      setFormData({ ...formData, userType: e.target.value })
+                    }
+                    className="w-full pl-10 pr-10 py-2.5 bg-background border border-input rounded-lg text-foreground focus:outline-none focus:ring-2 focus:ring-ring/50 focus:border-ring transition-all appearance-none cursor-pointer"
+                  >
+                    <option value="client">Client</option>
+                    <option value="developer">Developer</option>
+                    <option value="admin">Administrator</option>
+                    <option value="guest">Guest</option>
+                  </select>
+                  <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground pointer-events-none" />
+                </div>
+              </div>
+
               {/* Email Field */}
               <div className="space-y-2">
                 <label
