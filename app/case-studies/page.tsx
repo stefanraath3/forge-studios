@@ -1,3 +1,5 @@
+"use client";
+
 import {
   ArrowRight,
   ArrowUpRight,
@@ -10,6 +12,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import Navigation from "../components/Navigation";
+import { motion } from "framer-motion";
 
 const caseStudies = [
   {
@@ -124,19 +127,34 @@ export default function CaseStudiesPage() {
 
         <div className="max-w-7xl mx-auto">
           <div className="max-w-3xl mb-16">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-muted/60 border border-border/60 mb-6">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-muted/60 border border-border/60 mb-6"
+            >
               <Target className="w-3.5 h-3.5 text-foreground/80" />
               <span className="text-xs font-medium text-foreground/80">
                 Featured Work
               </span>
-            </div>
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6 text-foreground">
+            </motion.div>
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6 text-foreground"
+            >
               Case Studies
-            </h1>
-            <p className="text-xl text-muted-foreground leading-relaxed">
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="text-xl text-muted-foreground leading-relaxed"
+            >
               Real projects, real impact. Explore how we've helped companies
               scale, innovate, and transform their digital products.
-            </p>
+            </motion.p>
           </div>
 
           {/* Stats */}
@@ -147,8 +165,15 @@ export default function CaseStudiesPage() {
               { icon: Zap, label: "Faster Time to Market", value: "40%" },
               { icon: Clock, label: "Years of Expertise", value: "8+" },
             ].map((stat, i) => (
-              <div
+              <motion.div
                 key={i}
+                initial={{ opacity: 0, y: 20, scale: 0.95 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{
+                  duration: 0.5,
+                  delay: 0.3 + i * 0.1,
+                  ease: "easeOut",
+                }}
                 className="p-6 rounded-2xl border border-border bg-background/50 backdrop-blur-sm"
               >
                 <stat.icon className="w-5 h-5 text-foreground/60 mb-3" />
@@ -156,7 +181,7 @@ export default function CaseStudiesPage() {
                 <div className="text-sm text-muted-foreground">
                   {stat.label}
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -167,27 +192,42 @@ export default function CaseStudiesPage() {
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-2 gap-8">
             {caseStudies.map((study, index) => (
-              <article
+              <motion.article
                 key={study.id}
+                initial={{ opacity: 0, y: 50, x: index % 2 === 0 ? -20 : 20 }}
+                whileInView={{ opacity: 1, y: 0, x: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{
+                  duration: 0.6,
+                  delay: (index % 2) * 0.1,
+                  ease: "easeOut",
+                }}
+                whileHover={{ y: -8, scale: 1.02 }}
                 className="group relative rounded-3xl border border-border bg-background/50 backdrop-blur-sm overflow-hidden hover:border-foreground/20 transition-all duration-300"
               >
                 {/* Image/Visual Area */}
-                <div
+                <motion.div
                   className={`relative h-72 bg-gradient-to-br ${study.color} flex items-center justify-center overflow-hidden`}
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ duration: 0.4 }}
                 >
                   <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.1),transparent_50%)]" />
                   <div className="absolute inset-0 bg-grid-pattern opacity-[0.02]" />
                   <div className="relative z-10 text-center p-8">
-                    <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-background/80 backdrop-blur-sm border border-border/60 mb-4">
+                    <motion.div
+                      className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-background/80 backdrop-blur-sm border border-border/60 mb-4"
+                      whileHover={{ scale: 1.05 }}
+                      transition={{ duration: 0.2 }}
+                    >
                       <span className="text-xs font-medium text-foreground">
                         {study.category}
                       </span>
-                    </div>
+                    </motion.div>
                     <h3 className="text-4xl font-bold tracking-tight">
                       {study.title}
                     </h3>
                   </div>
-                </div>
+                </motion.div>
 
                 {/* Content */}
                 <div className="p-8">
@@ -198,41 +238,63 @@ export default function CaseStudiesPage() {
                   {/* Impact Metrics */}
                   <div className="grid grid-cols-3 gap-4 mb-6 pb-6 border-b border-border">
                     {study.impact.map((metric, i) => (
-                      <div key={i}>
+                      <motion.div
+                        key={i}
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.1 + i * 0.05, duration: 0.3 }}
+                        whileHover={{ scale: 1.1, y: -2 }}
+                      >
                         <div className="text-lg font-semibold mb-1">
                           {metric.value}
                         </div>
                         <div className="text-xs text-muted-foreground">
                           {metric.label}
                         </div>
-                      </div>
+                      </motion.div>
                     ))}
                   </div>
 
                   {/* Technologies */}
                   <div className="flex flex-wrap gap-2 mb-6">
                     {study.technologies.map((tech, i) => (
-                      <span
+                      <motion.span
                         key={i}
+                        initial={{ opacity: 0, scale: 0 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.2 + i * 0.05, duration: 0.3 }}
+                        whileHover={{ scale: 1.1, y: -2 }}
                         className="px-3 py-1 rounded-full bg-muted/60 text-xs font-medium text-foreground/80"
                       >
                         {tech}
-                      </span>
+                      </motion.span>
                     ))}
                   </div>
 
                   {/* Footer */}
                   <div className="flex items-center justify-between">
-                    <span className="text-sm text-muted-foreground">
+                    <motion.span
+                      className="text-sm text-muted-foreground"
+                      initial={{ opacity: 0 }}
+                      whileInView={{ opacity: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: 0.3 }}
+                    >
                       {study.year}
-                    </span>
-                    <button className="group/btn inline-flex items-center gap-2 text-sm font-medium hover:gap-3 transition-all">
+                    </motion.span>
+                    <motion.button
+                      className="group/btn inline-flex items-center gap-2 text-sm font-medium hover:gap-3 transition-all"
+                      whileHover={{ x: 5 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
                       Read case study
                       <ArrowUpRight className="w-4 h-4 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
-                    </button>
+                    </motion.button>
                   </div>
                 </div>
-              </article>
+              </motion.article>
             ))}
           </div>
         </div>
@@ -241,24 +303,50 @@ export default function CaseStudiesPage() {
       {/* CTA Section */}
       <section className="py-24 px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          <div className="relative rounded-3xl border border-border bg-muted/20 p-12 md:p-20 overflow-hidden">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="relative rounded-3xl border border-border bg-muted/20 p-12 md:p-20 overflow-hidden"
+          >
             <div className="absolute inset-0 -z-10">
               <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-foreground/5 via-transparent to-transparent rounded-full blur-3xl" />
             </div>
             <div className="max-w-2xl mx-auto text-center">
-              <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-6">
+              <motion.h2
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                className="text-3xl md:text-5xl font-bold tracking-tight mb-6"
+              >
                 Ready to create your success story?
-              </h2>
-              <p className="text-lg text-muted-foreground mb-10">
+              </motion.h2>
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+                className="text-lg text-muted-foreground mb-10"
+              >
                 Let's discuss how we can help you build exceptional software
                 that drives real business impact.
-              </p>
-              <button className="group px-7 py-3.5 rounded-lg bg-foreground text-background font-medium hover:opacity-90 transition-all inline-flex items-center gap-2">
+              </motion.p>
+              <motion.button
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.4 }}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="group px-7 py-3.5 rounded-lg bg-foreground text-background font-medium hover:opacity-90 transition-all inline-flex items-center gap-2"
+              >
                 Start your project
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
-              </button>
+              </motion.button>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
