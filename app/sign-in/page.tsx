@@ -2,9 +2,11 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { ArrowRight, Code2, Eye, EyeOff } from "lucide-react";
 
 export default function SignIn() {
+  const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
     email: "",
@@ -15,6 +17,9 @@ export default function SignIn() {
     e.preventDefault();
     // Handle sign in logic here
     console.log("Sign in with:", formData);
+
+    // Redirect to dashboard after successful sign in
+    router.push("/dashboard");
   };
 
   return (
